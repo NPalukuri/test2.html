@@ -1,0 +1,187 @@
+<html>  
+  <head>
+<style>
+   #Section2{
+    display: none};
+   
+   
+</style>
+   </head>
+
+   <body>
+    <div class="background-image">
+    <style>
+        .background-image{
+        background-image: url("./12\ apostles\ 2.jpeg");
+        background-size: cover ;
+        background-repeat: no-repeat ;
+        height: 100vh;
+        width: 100vh;
+ 
+        }
+        
+    </style>
+    
+
+
+
+     <h1>Booking Details</h1>
+     
+    
+     
+     <form name="myform" onsubmit="return Validpassword()" action="welcome.html" method="post">
+
+   
+
+      <div id="Section1">
+      <!--Section 1 Radio button code starts--> 
+      
+<br><b> Choose your destination: </b><br>
+<input type="radio" name="one" id="Oneway" value="Oneway" onclick=" checkButton()">Oneway 
+<input type="radio" name="one" id="Roundtrip" value="roundtrip"  onclick=" checkButton()" >Roundtrip<br> 
+
+
+<!--Radio button code Ends--> 
+
+<!--<button type="button" onclick=" checkButton()"> Submit </button>--> 
+    
+<h3 id="disp" style= "color:green">               </h3>
+<h4 id="error" style= "color:red">                </h4>
+</div>   
+     
+<!--Section  1 Ends -->             
+<div id="Section2">
+<!--Section  2 - Make invisible until radio button selected-->       
+      
+      Enter your name: <input type="text" name="myname" id="newmine" pattern="[a-zA-Z]{3,}" title="Only Alphabets with minimum three">
+                          
+       <br> <br>  Password: <input type="password" name="pass1" id=""> 
+       <br> <br>  Confirm Password:<input type="password"  name="cpass1">
+                          
+       <br> <br>  Enter your email: <input type="text" name="myemail" id="newmine" >
+		
+		<br> <br> from: <input type="text" name="from" id="from" >
+		<br> <br>  to: <input type="text" name="to" id="to" >
+		
+        <br><br>  Enter your DOB: <input type="date" name="mydate" id="newmine">
+		
+		
+		    <br><br>
+			Select Gender:
+			<select name="gender" id="gender">
+  <option value="male">MALE</option>
+  <option value="female">FEMALE</option>
+  <option value="others">OTHERS</option>
+  
+</select>
+    
+        <br><br>  Enter your Mobile Number: <input type="number" name="mobile" id="newmine">
+      <br> <br>   <input type="submit" value="Submit">
+    <!--Section  2 Ends -->    <!--section2.style.display = 'block'; --> 
+    </div>      
+    </form>
+</div>
+    <script>
+function checkButton() 
+                    {  
+                        if(document.getElementById('Oneway').checked) 
+                         { 
+                           document.getElementById("disp").innerHTML = document.getElementById("Oneway").value  + " radio button is checked"; 
+                           document.getElementById("Section2").style.display = "block";
+                          } 
+                        else if(document.getElementById('Roundtrip').checked) 
+                             { 
+                               document.getElementById("disp").innerHTML = document.getElementById("Roundtrip").value + " radio button is checked";   
+                               document.getElementById("Section2").style.display = "block";
+                               
+                              } 
+                                       else { 
+                                               document.getElementById("error").innerHTML 
+                                                   = "You have not selected a destination"; 
+                                            } 
+   
+    }
+                                          
+    
+
+function Validpassword()
+              {
+                 let password1=document.myform.pass1.value;
+                 let cpassword1=document.myform.cpass1.value;
+                 if (password1.length<6)
+                        {
+                           alert( "password must be more than 6 characters")
+                           return false;
+                        }
+				if (cpassword1.length<6)
+                        {
+                           alert( "enter the 6 charcters")
+                           return false;
+                        }		
+                 if (password1==cpassword1) 
+                        {
+                           return true;
+                        }
+                     else 
+                          {
+                            alert( "password and confirm password must be same")
+                            return false;
+                          }                     
+                         
+
+               let username=document.getElementById("newmine").value;
+                 
+                 if (username== "null" || username == "")
+                        {
+                           alert( "enter correctname");
+                           return false;
+                        }
+
+           let mymail=document.myform.myemail.value;
+           let attherate=mymail.indexOf("@");
+           let atthedot=mymail.lastIndexOf(".");
+
+           if (attherate<1 || atthedot<attherate+2 || atthedot>=mymail.length)
+                  {
+                     alert( "enter the correct email");
+                     return false;
+                  }
+
+            let curdate=new Date();
+                 let dob2=Date(document.myform.mydate.value)
+
+                 if (dob2>curdate)
+                        {
+                           alert( "enter the correct DOB");
+                           return false;
+                        }
+
+                        let mobile1=(document.myform.mobile.value)
+
+if (mobile1.length==10)
+    {
+       return true
+    }
+ else      
+        {
+          alert( "enter the correct 10 digits number");
+          return false;
+        }
+        
+       
+      
+
+
+
+
+
+
+     } 
+
+    </script>
+   </body>
+
+
+
+
+</html>
